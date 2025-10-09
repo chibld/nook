@@ -1,5 +1,5 @@
-"use client";
+import SearchBar from "../_components/SearchBar/searchBar";
 
 export default function LibraryPage() {
-    return <h1>Library Page</h1>;
+  return <SearchBar />;
 }
