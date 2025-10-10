@@ -6,7 +6,7 @@ export const booksRouter = createTRPCRouter({
     .input(z.object({ query: z.string().min(1) }))
     .query(async ({ input }) => {
       const res = await fetch(
-        `https://openlibrary.org/search.json?q=${encodeURIComponent(input.query)}&limit=10`,
+        `https://openlibrary.org/search.json?q=${encodeURIComponent(input.query)}&limit=5`,
       );
       const data = await res.json();
 
