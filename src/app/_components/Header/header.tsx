@@ -6,26 +6,29 @@ import { Sidebar } from "../Sidebar/sidebar";
 import Link from "next/link";
 
 export function Header() {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
-        <header className="relative flex items-center justify-between px-6 py-4">
-            <Link href="/" className="absolute top-5 left-5">
-                <img src="/nookLogo.png" className="h-auto w-35" />
-            </Link>
-            <div className="relative flex flex-1 top-2 justify-center">
-                <div className="relative w-full">
-                    <SearchBar />
-                </div>
-            </div>
+  return (
+    <>
+      <header className="fixed top-0 left-0 z-50 w-full">
+        <div className="flex h-24 w-full items-center justify-between">
+          <Link href="/" className="flex items-center pl-4">
+            <img src="/nookLogo.png" className="h-auto w-35 object-contain" />
+          </Link>
 
-            <button
-                className="absolute top-0 right-0"
-                onClick={() => setIsOpen(true)}
-            >
-                <img src="/openSide.png" />
-            </button>
-            <Sidebar isOpen={isOpen} onClose={() => setIsOpen(false)} />
-        </header>
-    );
+          <div className="relative mx-6 max-w-md flex-1">
+            <SearchBar />
+          </div>
+
+          <button
+            onClick={() => setIsOpen(true)}
+            className="flex items-center justify-center hover:opacity-70"
+          >
+            <img src="/openSide.png" />
+          </button>
+        </div>
+      </header>
+      <Sidebar isOpen={isOpen} onClose={() => setIsOpen(false)} />
+    </>
+  );
 }
