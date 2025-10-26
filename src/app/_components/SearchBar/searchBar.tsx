@@ -16,10 +16,10 @@ export default function SearchBar() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                 />
-                <div className="absolute">
+                <div className="absolute left-0 right-0 z-10">
                     {search.isLoading && <p>Loading...</p>}
                     {search.data && (
-                        <ul className="space-y-2 pt-2">
+                        <ul className="w-full space-y-2 pt-2">
                             {search.data.map((book) => (
                                 <li
                                     key={book.key}
