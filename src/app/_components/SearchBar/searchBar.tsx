@@ -25,9 +25,9 @@ export default function SearchBar() {
                                     key={book.key}
                                     className="bg-foreground flex items-center gap-4 rounded-xl p-3"
                                 >
-                                    {book.cover && (
+                                    {book.coverUrl && (
                                         <img
-                                            src={book.cover}
+                                            src={book.coverUrl}
                                             alt={book.title}
                                             className="h-16 w-12 rounded object-cover"
                                         />

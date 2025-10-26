@@ -1,6 +1,6 @@
 import { db } from "~/server/db";
 import { books } from "./schema";
-import { eq, ilike, or } from "drizzle-orm";
+import { eq, ilike, or, sql, SQL } from "drizzle-orm";
 
 export type BookRecord = {
     id: string;
@@ -24,5 +24,13 @@ export async function upsertBooks(newBooks: BookRecord[]) {
     await db
         .insert(books)
         .values(newBooks)
-        .onConflictDoNothing({ target: books.id });
+        .onConflictDoUpdate({
+            target: books.id,
+            set: {
+                title: sql`COALESCE(EXCLUDED.title, ${books.title})`,
+                author: sql`COALESCE(EXCLUDED.author, ${books.author})`,
+                publishedYear: sql`COALESCE(EXCLUDED.published_year, ${books.publishedYear})`,
+                coverUrl: sql`COALESCE(EXCLUDED.cover_url, ${books.coverUrl})`,
+            },
+        });
 }

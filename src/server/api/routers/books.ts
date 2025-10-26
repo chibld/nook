@@ -24,7 +24,7 @@ export const booksRouter = createTRPCRouter({
                 publishedYear: book.first_publish_year
                     ? String(book.first_publish_year)
                     : null,
-                cover: book.cover_i
+                coverUrl: book.cover_i
                     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
                     : null,
             }));
