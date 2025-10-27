@@ -165,7 +165,6 @@ export const verificationTokens = createTable(
     (t) => [primaryKey({ columns: [t.identifier, t.token] })],
 );
 
-
 export const books = pgTable("books", {
     id: varchar("id", { length: 50 }).primaryKey(),
     title: text("title").notNull(),
@@ -176,7 +175,7 @@ export const books = pgTable("books", {
 
 export const reviews = pgTable("reviews", {
     id: serial("id").primaryKey(),
-    userId: varchar("user_id", {length: 255 })
+    userId: varchar("user_id", { length: 255 })
         .notNull()
         .references(() => users.id, { onDelete: "cascade" }),
     bookId: varchar("book_id", { length: 50 })
