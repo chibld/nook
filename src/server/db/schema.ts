@@ -76,6 +76,7 @@ export const users = createTable("user", (d) => ({
         .default(sql`CURRENT_TIMESTAMP`),
 
     image: d.varchar({ length: 255 }),
+    passwordHash: d.varchar({ length: 255 }),
 }));
 
 export const usersRelations = relations(users, ({ many }) => ({
@@ -175,7 +176,7 @@ export const books = pgTable("books", {
 
 export const reviews = pgTable("reviews", {
     id: serial("id").primaryKey(),
-    userId: integer("user_id")
+    userId: varchar("user_id", {length: 255 })
         .notNull()
         .references(() => users.id, { onDelete: "cascade" }),
     bookId: varchar("book_id", { length: 50 })
