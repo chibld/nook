@@ -47,7 +47,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <img src="/closeSide.png" />
       </button>
 
-      <nav className="flex h-9/10 flex-col items-center justify-center space-y-10 font-bold text-white text-2xl sm:space-y-16 md:space-y-20">
+      <nav className="flex h-4/5 flex-col items-center justify-end space-y-20 font-bold text-white text-2xl sm:space-y-16 md:space-y-20">
         {navItems.map((item) => (
           <Link
             key={item.href}
